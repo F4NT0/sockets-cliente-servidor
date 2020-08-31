@@ -1,4 +1,4 @@
-package Java.Example.TCP;
+package Java.Sockets.TCP;
 
 import java.io.*; 
 import java.net.*; 
@@ -28,6 +28,8 @@ class TCPServer {
 				System.out.println("Enviado a Informação: " + capitalizedSentence);
 			}catch(NullPointerException e){
 				System.out.println("Processo de Leitura Finalizado!");
+				connectionSocket.close();
+				welcomeSocket.close();
 				start = false;
 			}	
 		} 
