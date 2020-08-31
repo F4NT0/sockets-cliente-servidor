@@ -1,6 +1,6 @@
 package Java.Example.UDP;
 
-import java.io.*;
+//import java.io.*;
 import java.net.*;
  
 public class UDPServer {
@@ -39,8 +39,8 @@ public class UDPServer {
 			System.out.print("Enviando " + capitalizedSentence + "...");
  
             serverSocket.send(sendPacket);
-            serverSocket.close();
 			System.out.println("OK\n");
 		}
+		
 	}
 }
