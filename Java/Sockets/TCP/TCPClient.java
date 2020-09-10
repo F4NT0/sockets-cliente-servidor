@@ -1,4 +1,4 @@
-package Java.Example.TCP;
+package Java.Sockets.TCP;
 
 import java.io.*;
 import java.net.*;

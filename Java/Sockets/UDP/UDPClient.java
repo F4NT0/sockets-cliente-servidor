@@ -1,4 +1,4 @@
-package Java.Example.UDP;
+package Java.Sockets.UDP;
 
 import java.io.*;
 import java.net.*;
