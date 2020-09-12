@@ -2,7 +2,7 @@ package Java.Sockets.TCP;
 
 import java.io.*; 
 import java.net.*; 
-class TCPServer { 
+public class TCPServer { 
 	 public static void main( String argv[]) throws Exception 
 	 { 
 		 String clientSentence; 
@@ -17,16 +17,17 @@ class TCPServer {
 			try{
 				System.out.println("Iniciado o Processo de Leitura");															
 				BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
-				DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
-				System.out.println("Carregado a Informação do Cliente: ");												
+				DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());												
 				while(true){
 					clientSentence = inFromClient.readLine();
 					if(!clientSentence.equals("end")){
-						System.out.println("Valor Recebido: " + clientSentence);
-						response = "[ OK ] | ";
-			        	outToClient.writeBytes(response);
+						System.out.println("[ VALOR RECEBIDO ] : " + clientSentence);
 					}else{
 						if(clientSentence.equals("end")){
+							
+							response = "[ OK ] Leitura Realizado com Sucesso";
+							outToClient.writeBytes(response);
+							
 							System.out.println("Processo de Leitura Finalizado!");
 				            connectionSocket.close();
 				            welcomeSocket.close();

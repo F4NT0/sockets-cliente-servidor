@@ -1,4 +1,0 @@
-Exemplo de Envio de dados para o Servidor
-Somente esta sendo lido as lihas desse arquivo
-uhuuul funcionou!
-end

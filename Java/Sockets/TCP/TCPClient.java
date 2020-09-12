@@ -3,13 +3,13 @@ package Java.Sockets.TCP;
 import java.io.*;
 import java.net.*;
  
-class TCPClient {
+public class TCPClient {
  
 	public static void main(String argv[]) throws Exception {
 		// String sentence;
 		String modifiedSentence;
  
-		// BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
  
 		int porta = 6789;
 		String servidor = "localhost";
@@ -30,7 +30,9 @@ class TCPClient {
 
 		// -------- TESTE ---------------
 
-		String file = "/home/f4nt0/Desktop/sockets-cliente-servidor/Java/Sockets/TCP/teste.txt"; 
+		System.out.println("Digite o nome do Arquivo que deseja enviar [teste-pequeno | teste-grande]");
+		String nameFile = inFromUser.readLine();
+		String file = "Java/Arquivos-de-teste/" + nameFile + ".txt"; 
 		BufferedReader readFile = new BufferedReader(new FileReader(file));
 
 		String sentence;
