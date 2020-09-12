@@ -9,7 +9,7 @@ class TCPClient {
 		// String sentence;
 		String modifiedSentence;
  
-		BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+		// BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
  
 		int porta = 6789;
 		String servidor = "localhost";
@@ -33,13 +33,13 @@ class TCPClient {
 		String file = "/home/f4nt0/Desktop/sockets-cliente-servidor/Java/Sockets/TCP/teste.txt"; 
 		BufferedReader readFile = new BufferedReader(new FileReader(file));
 
-		String sentence = "";
+		String sentence;
 		while(true){
+			sentence = readFile.readLine();
 			if(sentence == null){
 				break;
 			}
 			System.out.println("Dado sendo Enviado: " + sentence);
-			sentence = readFile.readLine();
 			outToServer.writeBytes(sentence + '\n');
 			
 		}
