@@ -5,8 +5,8 @@ import java.net.*;
 class TCPServer { 
 	 public static void main( String argv[]) throws Exception 
 	 { 
-		 String clientSentence; 
-		 String capitalizedSentence; 
+		 String clientSentence = ""; 
+		 String response; 
 		 ServerSocket welcomeSocket = new ServerSocket(6789); 
 		 boolean start = true;
  
@@ -20,12 +20,19 @@ class TCPServer {
 				new InputStreamReader(connectionSocket.getInputStream()));
 				DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 				System.out.println("Carregado a Informação do Cliente: ");												
-				clientSentence = inFromClient.readLine();
-				System.out.println("Valor Recebido: " + clientSentence); 														
-				capitalizedSentence = clientSentence.toUpperCase() + '\n';
-				System.out.println("Valor a ser Enviado: " + capitalizedSentence); 
-				outToClient.writeBytes(capitalizedSentence); 
-				System.out.println("Enviado a Informação: " + capitalizedSentence);
+				while(true){
+					clientSentence = inFromClient.readLine();
+					if(clientSentence != null){
+
+					}else{
+						break;
+					}
+					System.out.println("Valor Recebido: " + clientSentence); 														
+					response = "[ OK ] : " + clientSentence + "\n";
+					System.out.println("Valor a ser Enviado: " + response);
+					outToClient.writeBytes(response);
+					System.out.println("Enviado Resposta com Sucesso!");
+				}
 			}catch(NullPointerException e){
 				System.out.println("Processo de Leitura Finalizado!");
 				connectionSocket.close();
