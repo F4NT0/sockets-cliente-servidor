@@ -32,7 +32,7 @@ public class TCPClient {
 
 		System.out.println("Digite o nome do Arquivo que deseja enviar [teste-pequeno | teste-grande]");
 		String nameFile = inFromUser.readLine();
-		String file = "Java/Arquivos-de-teste/" + nameFile + ".txt"; 
+		String file = "Arquivos-de-teste/" + nameFile + ".txt"; 
 		BufferedReader readFile = new BufferedReader(new FileReader(file));
 
 		String sentence;
