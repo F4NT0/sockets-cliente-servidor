@@ -1,8 +1,9 @@
-package Java.Sockets.UDP;
+// package Java.Sockets.UDP;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.net.*;
- 
+
 public class UDPClient {
 	public static void main(String args[]) throws Exception {
  
@@ -23,23 +24,14 @@ public class UDPClient {
 		// sendData = sentence.getBytes();
 		// DatagramPacket sendPacket = new DatagramPacket(sendData,sendData.length, IPAddress, porta);
 
-		System.out.println("Digite o nome do Arquivo que deseja enviar [teste-pequeno | teste-grande]");
+		System.out.println("Pressione ENTER para continuar");
 		String nameFile = inFromUser.readLine();
-		String file = "Arquivos-de-teste/" + nameFile + ".txt";
-		BufferedReader readFile = new BufferedReader(new FileReader(file));
-		// Basico caso não tenha dados
-		String sentence = "Arquivo Não Lido";
-		sendData = sentence.getBytes();
+		String filePath = "C:\\Users\\Fuerras\\Desktop\\TCP UDP\\sockets-cliente-servidor\\Java\\Arquivos-de-teste\\teste-grande.txt";
+		File file = new File(filePath);
+		
+		sendData = Files.readAllBytes(file.toPath());
 		DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, porta);
-		while(true){
-			sentence = readFile.readLine();
-			sendData = sentence.getBytes();
-			if(sentence.equals("end")){
-				break;
-			}
-		    sendPacket = new DatagramPacket(sendData,sendData.length, IPAddress, porta);
-		}
-		readFile.close();
+		
 		System.out.println("Enviando pacote UDP para " + servidor + ":" + porta);
 		clientSocket.send(sendPacket);	
  
