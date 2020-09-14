@@ -1,4 +1,4 @@
-package Java.Sockets.UDP;
+// package Java.Sockets.UDP;
 
 import java.net.*;
  
@@ -28,11 +28,12 @@ public class UDPServer {
 				System.out.print("Enviando " + capitalizedSentence + "...");
 				serverSocket.send(sendPacket);
 				System.out.println("OK\n");
-				serverSocket.close();
 			}
 		}catch(SocketException e){
+			e.printStackTrace();
 			System.out.println("Finalizado o Servidor!");
+			serverSocket.close();
 		}
-		
+		serverSocket.close();
 	}
 }
